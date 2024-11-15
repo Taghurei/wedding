@@ -19,6 +19,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20241004.0",
     "nitro-cloudflare-dev": "^0.1.6",
+    "sass-embedded": "^1.79.5",
     "wrangler": "^3.80.0"
   }
 }
