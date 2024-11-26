@@ -10,11 +10,11 @@
           <NuxtLink to="/"> <div class="img img-container"></div></NuxtLink>
           <div class="navigation">
             <li><NuxtLink to="/">Accueil</NuxtLink></li>
-            <li><NuxtLink to="/services">Infos</NuxtLink></li>
-            <li><NuxtLink to="/services">Se déplacer</NuxtLink></li>
+            <li><NuxtLink to="/infos">Infos</NuxtLink></li>
+            <li><NuxtLink to="/moving">Se déplacer</NuxtLink></li>
             <li><NuxtLink to="/accomodations">Se loger</NuxtLink></li>
-            <li><NuxtLink to="/about">Photos</NuxtLink></li>
-            <li><NuxtLink to="/contact">Cadeaux</NuxtLink></li>
+            <li><NuxtLink to="/photos">Photos</NuxtLink></li>
+            <li><NuxtLink to="/gift">Cadeaux</NuxtLink></li>
           </div>
         </div>
         <div class="countdown">
@@ -46,7 +46,6 @@ export default {
 
 <style scoped>
 header {
-  display: none;
   background-color: #fff;
   color: #1b1b1b;
   padding: 8px;

@@ -311,6 +311,8 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  background-color: #f9f5f0;
+
 }
 
 .card-container {
@@ -322,6 +324,7 @@ export default {
 
 .card {
   border: 1px solid #ddd;
+  background: white;
   align-items: center;
   justify-content: flex-start;
   border-radius: 8px;

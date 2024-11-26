@@ -11,4 +11,5 @@
   
   <style scoped>
   /* Footer styles here */
+  
   </style>
