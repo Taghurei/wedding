@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/_nuxt/*",
+    "/",
+    "/200",
+    "/404",
+    "/favicon.ico",
+    "/robots.txt",
+    "/hotels/acropole.png",
+    "/hotels/ambiance-cosy.png",
+    "/hotels/chaumiere-normandie.png",
+    "/hotels/chaumiere.png",
+    "/hotels/chevaux-dore.png",
+    "/hotels/clesanie.png",
+    "/hotels/clos-lodges.png",
+    "/hotels/cygne-cycle.png",
+    "/hotels/leontine.png",
+    "/hotels/liondor.png",
+    "/hotels/maison-54.png",
+    "/hotels/maison-du-18.png",
+    "/hotels/modern-cosy.png",
+    "/hotels/moulin-fouret.png",
+    "/hotels/moulinsard.png"
+  ]
+}
