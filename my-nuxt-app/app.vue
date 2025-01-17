@@ -7,6 +7,14 @@
     href="https://fonts.googleapis.com/css?family=Montserrat"
     rel="stylesheet"
   />
+  <link
+    href="https://fonts.googleapis.com/css?family=Great Vibes"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Playfair Display"
+    rel="stylesheet"
+  />
 
   <NuxtLayout>
     <NuxtPage />
@@ -19,7 +27,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import './style.scss';
+@import "./style.scss";
 body {
   margin: 0;
   font-family: "Montserrat";

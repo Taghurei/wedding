@@ -58,17 +58,19 @@ export default {
 .info {
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   &__title {
-    font-size: 2rem;
     color: #333;
     margin-bottom: 1rem;
     text-align: center;
+    font-family: "Great Vibes", sans-serif;
+    font-size: 48px;
+
   }
 
   &__intro {
@@ -89,7 +91,8 @@ export default {
 
 
     &-title {
-      font-size: 1.5rem;
+      font-family: "Great Vibes", sans-serif;
+      font-size: 36px;
       color: #333;
       margin-bottom: 1rem;
       display: flex;

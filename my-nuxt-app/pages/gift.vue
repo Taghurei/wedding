@@ -42,7 +42,7 @@ export default {
   height: calc(100vh - 160px);
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
   border-radius: 8px;
   display: flex;
   flex-direction: column;

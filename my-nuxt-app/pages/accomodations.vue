@@ -311,7 +311,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
 
 }
 

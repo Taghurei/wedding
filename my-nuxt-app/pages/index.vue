@@ -2,35 +2,37 @@
   <div class="welcome-container">
     <div class="infos">
       <div>
-        <h1>Date & Lieu</h1>
-        <p>Samedi 19 Juillet 2025</p>
-      </div>
-      <div>
-        <p>Céremonie à 16h</p>
-        <h3>Eglise de Beaumont-le-Roger</h3>
-        <div
-          class="address"
-          @click="
-            onLocationClick(
-              'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.1148023,0.6469203,12.5z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
-            )
-          "
-        >
-          1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
+        <div>
+          <h1>Date & Lieu</h1>
+          <p>Samedi 19 Juillet 2025</p>
         </div>
-      </div>
-      <div>
-        <p>Cocktail et diner à 18h30</p>
-        <h3>Chateau de Carsix</h3>
-        <div
-          class="address"
-          @click="
-            onLocationClick(
-              'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1139027,0.647654,12.96z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
-            )
-          "
-        >
-          3 Rue Gustave Heon, 27300 Nassandres sur Risle
+        <div>
+          <p>Céremonie à 16h</p>
+          <h3>Eglise de Beaumont-le-Roger</h3>
+          <div
+            class="address"
+            @click="
+              onLocationClick(
+                'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.1148023,0.6469203,12.5z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
+              )
+            "
+          >
+            1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
+          </div>
+        </div>
+        <div>
+          <p>Cocktail et diner à 18h30</p>
+          <h3>Chateau de Carsix</h3>
+          <div
+            class="address"
+            @click="
+              onLocationClick(
+                'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1139027,0.647654,12.96z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
+              )
+            "
+          >
+            3 Rue Gustave Heon, 27300 Nassandres sur Risle
+          </div>
         </div>
       </div>
     </div>
@@ -55,24 +57,29 @@ export default {
 .welcome-container {
   display: flex;
   flex-direction: row;
-  min-height: calc(100vh - 150px);
-  font-family: "Montserrat";
+
+  min-height: calc(100vh - 96px);
+  font-family: "Great Vibes", sans-serif;
+  background-color: #d6a78422;
+
   // align-items: center;
   h1 {
-    font-size: 32px;
+    font-size: 64px;
     margin-bottom: 32px !important;
   }
   h2 {
     margin-bottom: 24px !important;
   }
   h3 {
-    font-size: 16px;
+    font-size: 32px;
     margin-bottom: 12px !important;
   }
   p {
     margin-bottom: 12px !important;
     font-family: "Montserrat", light;
+    font-style: italic;
     font-weight: 200;
+    font-size: 20px;
   }
   h1,
   h2,
@@ -89,11 +96,18 @@ export default {
   }
   .infos {
     display: flex;
-    flex-direction: column;
-    gap: 48px;
-    padding: 160px 32px;
-    min-width: 30vw;
-    // align-items: center;
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    min-width: 100%;
+    align-items: center;
+    justify-content: center;
+    @media (min-width: 800px) {
+      padding: 160px 32px;
+      min-width: 30vw;
+    }
   }
   .image-container {
     display: flex;

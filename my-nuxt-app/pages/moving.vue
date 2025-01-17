@@ -1,7 +1,6 @@
 <template>
   <div class="moving">
-    <section class="transport">
-      <!-- Titre principal -->
+    <div class="transport">
       <h1 class="transport__title">Faciliter vos déplacements</h1>
 
       <!-- Section 1 : Venir à Bernay / Beaumont-Le-Roger -->
@@ -73,12 +72,20 @@
           <div class="transport__option">
             <h3 class="transport__option-title">Taxis disponibles</h3>
             <ul>
-              <li>Taxi de Beaumont-Le-Roger : <a href="tel:0232452428">02 32 45 24 28</a></li>
-              <li>Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> / <a href="tel:0603061037">06 03 06 10 37</a> </li>
+              <li>
+                Taxi de Beaumont-Le-Roger :
+                <a href="tel:0232452428">02 32 45 24 28</a>
+              </li>
+              <li>
+                Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> /
+                <a href="tel:0603061037">06 03 06 10 37</a>
+              </li>
             </ul>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">Voitures de location (depuis Evreux)</h3>
+            <h3 class="transport__option-title">
+              Voitures de location (depuis Evreux)
+            </h3>
             <ul>
               <li>
                 <a
@@ -109,11 +116,12 @@
           </p>
           <li>Navettes</li>
           <p>
-            Des navettes sont prévues le samedi soir à partir de 23h pour vous aider à rentrer chez vous
+            Des navettes sont prévues le samedi soir à partir de 23h pour vous
+            aider à rentrer chez vous
           </p>
         </ul>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -132,40 +140,38 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
   .transport {
     max-width: 800px;
-    margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    width: 100vw;
 
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     &__title {
-      font-size: 2rem;
+      font-family: "Great Vibes", sans-serif;
+      font-size: 32px;
+      margin: unset;
       color: #333;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    &__intro {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 2rem;
       text-align: center;
     }
 
     &__section {
-      margin-bottom: 2rem;
-      padding: 1rem;
+      padding: 16px;
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
 
       &-title {
-        font-size: 1.5rem;
+        display: flex;
+        align-self: center;
+        font-family: "Great Vibes", sans-serif;
+        font-size: 24px;
+
         color: #333;
-        margin-bottom: 1rem;
         display: flex;
         align-items: center;
       }
@@ -174,7 +180,7 @@ export default {
     &__options {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 16px;
     }
 
     &__option {
@@ -182,7 +188,8 @@ export default {
       min-width: 250px;
 
       &-title {
-        font-size: 1.2rem;
+        font-family: "Great Vibes", sans-serif;
+        font-size: 24px;
         color: #333;
         margin-bottom: 0.5rem;
       }
