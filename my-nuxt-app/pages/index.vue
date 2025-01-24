@@ -1,38 +1,42 @@
 <template>
-  <div class="welcome-container">
-    <div class="infos">
-      <div>
-        <div>
-          <h1>Date & Lieu</h1>
-          <p>Samedi 19 Juillet 2025</p>
+  <div class="welcome">
+    <div class="welcome__info">
+      <div class="welcome__info--title">
+        <h1>Béatrix & Gauthier</h1>
+        <hr class="welcome--separator" />
+        <h3>Samedi 19 Juillet 2025</h3>
+        <p>Nous sommes heureux de vous convier à notre mariage</p>
+        <hr class="welcome--separator" />
+      </div>
+      <div class="welcome__info--title">
+        <!-- <h2>Céremonie à 16h</h2> -->
+        <h4>Eglise de Beaumont-le-Roger</h4>
+        <p>⛪16h</p>
+        <div
+          class="address"
+          @click="
+            onLocationClick(
+              'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.1148023,0.6469203,12.5z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
+            )
+          "
+        >
+          1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
         </div>
-        <div>
-          <p>Céremonie à 16h</p>
-          <h3>Eglise de Beaumont-le-Roger</h3>
-          <div
-            class="address"
-            @click="
-              onLocationClick(
-                'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.1148023,0.6469203,12.5z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
-              )
-            "
-          >
-            1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
-          </div>
-        </div>
-        <div>
-          <p>Cocktail et diner à 18h30</p>
-          <h3>Chateau de Carsix</h3>
-          <div
-            class="address"
-            @click="
-              onLocationClick(
-                'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1139027,0.647654,12.96z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
-              )
-            "
-          >
-            3 Rue Gustave Heon, 27300 Nassandres sur Risle
-          </div>
+        <hr class="welcome--separator" />
+      </div>
+
+      <div class="welcome__info--title">
+        <!-- <h2>Cocktail et diner à 18h30</h2> -->
+        <h4>Château de Carsix</h4>
+        <div
+          class="address"
+          @click="
+            onLocationClick(
+              'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1139027,0.647654,12.96z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
+            )
+          "
+        >
+          3 Rue Gustave Heon, 27300 Nassandres sur Risle
         </div>
       </div>
     </div>
@@ -54,67 +58,66 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.welcome-container {
+.welcome {
   display: flex;
-  flex-direction: row;
-
+  flex-direction: column-reverse;
   min-height: calc(100vh - 96px);
   font-family: "Great Vibes", sans-serif;
   background-color: #d6a78422;
 
-  // align-items: center;
-  h1 {
-    font-size: 64px;
-    margin-bottom: 32px !important;
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 32px 32px 32px;
+    align-items: flex-start;
+    justify-content: center;
+    @media (min-width: 800px) {
+      padding: 16px 32px;
+      min-width: 30vw;
+    }
+    &--title {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
-  h2 {
-    margin-bottom: 24px !important;
-  }
-  h3 {
-    font-size: 32px;
-    margin-bottom: 12px !important;
-  }
-  p {
-    margin-bottom: 12px !important;
-    font-family: "Montserrat", light;
-    font-style: italic;
-    font-weight: 200;
-    font-size: 20px;
-  }
-  h1,
-  h2,
-  h3,
-  p {
+  &--separator {
     margin: 0;
+    height: 4px;
+    background: #d6a784;
+    border: unset;
+    max-width: 64px;
   }
-  .location {
+  @media (min-width: 800px) {
+    flex-direction: row;
+    padding: 16px 32px;
+    min-width: 30vw;
   }
+  @media (max-width: 800px) {
+    overflow: auto;
+  }
+
+  // align-items: center;
+
   .address {
     font-style: italic;
     cursor: pointer;
     text-decoration: underline;
+    font-family: "Montserrat", light;
+    font-size: 12px;
   }
-  .infos {
-    display: flex;
-    & > div {
-      display: flex;
-      flex-direction: column;
-      gap: 48px;
-    }
-    min-width: 100%;
-    align-items: center;
-    justify-content: center;
-    @media (min-width: 800px) {
-      padding: 160px 32px;
-      min-width: 30vw;
-    }
-  }
+
   .image-container {
     display: flex;
     align-items: center;
     width: 100%;
+    @media (max-width: 800px) {
+      padding: 32px;
+    }
   }
   .image {
+    border-radius: 6px;
     // min-height: calc(100vh - 68px); /* Full height of the viewport */
     background-image: url("../assets/images/chateau.png"); /* Path to your image */
     display: flex;
@@ -126,6 +129,10 @@ export default {
     background-size: cover;
     background-position: center;
     height: 100%;
+    @media (max-width: 800px) {
+      min-height: 300px;
+      width: calc(100vw - 64px);
+    }
   }
 }
 </style>

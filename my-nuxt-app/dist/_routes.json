@@ -5,9 +5,6 @@
   ],
   "exclude": [
     "/_nuxt/*",
-    "/",
-    "/200",
-    "/404",
     "/favicon.ico",
     "/robots.txt",
     "/hotels/acropole.png",
