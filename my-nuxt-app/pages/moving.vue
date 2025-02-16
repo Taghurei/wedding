@@ -5,12 +5,12 @@
 
       <!-- Section 1 : Venir à Bernay / Beaumont-Le-Roger -->
       <div class="transport__section">
-        <h2 class="transport__section-title">
-          Venir à Bernay / Beaumont-Le-Roger
-        </h2>
+        <h3 class="transport__section-title">
+          Venir sur les lieux de célebration
+        </h3>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">🚆 En train</h3>
+            <h4 class="transport__option-title">🚆 En train</h4>
             <ul>
               <li>
                 <a
@@ -38,7 +38,7 @@
             </ul>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">🛻 En voiture</h3>
+            <h4 class="transport__option-title">🛻 En voiture</h4>
             <ul>
               <li>
                 <a
@@ -58,19 +58,19 @@
 
       <!-- Section 2 : Se déplacer pendant le week-end -->
       <div class="transport__section">
-        <h2 class="transport__section-title">
+        <h3 class="transport__section-title">
           Se déplacer pendant le week-end
-        </h2>
+        </h3>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">Privilégier le covoiturage</h3>
+            <h3 class="transport__option-title">🚗 Privilégier le covoiturage</h3>
             <p class="transport__text">
               Si vous hésitez à venir en train pour des raisons techniques,
-              sachez que no
+              sachez que nous ferons tout notre possible pour que vous puissiez prendre les places de libres dans les voitures disponibles.
             </p>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">Taxis disponibles</h3>
+            <h3 class="transport__option-title">🚕 Taxis disponibles</h3>
             <ul>
               <li>
                 Taxi de Beaumont-Le-Roger :
@@ -84,7 +84,7 @@
           </div>
           <div class="transport__option">
             <h3 class="transport__option-title">
-              Voitures de location (depuis Evreux)
+              🚘 Voitures de location (depuis Evreux)
             </h3>
             <ul>
               <li>
@@ -104,22 +104,27 @@
       </div>
 
       <div class="transport__section">
-        <h2 class="transport__section-title">❓ Autres informations</h2>
-        <ul class="transport__faq">
-          <li>Parking</li>
-          <p>
-            Cérémonie religieuse: La ville de Beaumont-le-Roger à différents
+        <h3 class="transport__section-title">❓ Autres informations</h3>
+        <div class="transport__options">
+          <div class="transport__option">
+            <h3 class="transport__option-title">🅿️ Parking</h3>
+            <p class="transport__text">
+            <span class="transport__text--title">Cérémonie religieuse: </span> La ville de Beaumont-le-Roger à différents
             parking qui sont tous situés a moins de 5mn à pied de l'église
+            <p class="transport__text">
+              <span class="transport__text--title">Cocktail/Diner: </span>  Un parking est disponible sur le lieu de réception
           </p>
-          <p>
-            Cocktail/Diner: Un parking est disponible sur le lieu de réception
-          </p>
-          <li>Navettes</li>
-          <p>
-            Des navettes sont prévues le samedi soir à partir de 23h pour vous
+            </p>
+          </div>
+          <div class="transport__option">
+            <h3 class="transport__option-title">🚌 Navettes</h3>
+            <p class="transport__text">
+              Des navettes sont prévues le samedi soir à partir de 23h pour vous
             aider à rentrer chez vous
           </p>
-        </ul>
+          </div>
+    
+        </div>
       </div>
     </div>
   </div>
@@ -164,17 +169,12 @@ export default {
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
-
+      gap: 12px;
       &-title {
         display: flex;
         align-self: center;
-        font-family: "Great Vibes", sans-serif;
-        font-size: 24px;
-
-        color: #333;
-        display: flex;
-        align-items: center;
       }
+
     }
 
     &__options {
@@ -186,20 +186,18 @@ export default {
     &__option {
       flex: 1;
       min-width: 250px;
-
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       &-title {
-        font-family: "Great Vibes", sans-serif;
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 0.5rem;
+        font-size: 14px;
       }
-
       ul {
         list-style: none;
         padding: 0;
-
+        margin: 0;
         li {
-          margin: 0.5rem 0;
+          margin: 12px 0;
 
           a {
             color: #0056b3;
@@ -212,23 +210,13 @@ export default {
         }
       }
 
-      p {
-        font-size: 1rem;
-        color: #555;
+    }
+    &__text {
+      &--title {
+        font-weight: 500;
+        text-decoration: underline;
       }
     }
-
-    &__faq {
-      list-style: none;
-      padding: 0;
-      font-size: 1rem;
-      color: #555;
-
-      li {
-        margin: 0.5rem 0;
-      }
-    }
-
     &__link {
       color: #0056b3;
       text-decoration: none;

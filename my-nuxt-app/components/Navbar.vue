@@ -31,7 +31,13 @@
         </div>
         <!-- <NuxtLink to="/"> <div class="img img-container"></div></NuxtLink> -->
       </div>
-      <div v-if="openMenu" class="fullscreen-menu">
+      <div class="overlay" @click="closeMenu" v-if="openMenu"></div>
+
+      <div v-if="openMenu" class="mobile-menu">
+        <div class="scrabble scrabble--mobile">
+            <div class="img img-b"></div>
+            <div class="img img-g"></div>
+          </div>
         <ul>
           <li><NuxtLink to="/" @click="closeMenu">Accueil</NuxtLink></li>
           <li><NuxtLink to="/infos" @click="closeMenu">Infos</NuxtLink></li>
@@ -129,6 +135,10 @@ export default {
   position: absolute;
   display: flex;
   flex-direction: row;
+  &--mobile {
+    right: 12px;
+    top: 12px;
+  }
 }
 .img-g {
   background-image: url("../assets/images/G.png"); /* Path to your image */
@@ -203,44 +213,57 @@ export default {
   }
 }
 
-.fullscreen-menu {
+.mobile-menu {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 66vw;
   height: 100vh;
-  background-color: #d6a784;
-  color: white;
+  background-color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
   z-index: 1000;
+  padding-top:50px;
 }
-.fullscreen-menu ul {
+.mobile-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
+  width: 100%;
+
 }
-.fullscreen-menu li {
-  margin: 20px 0;
+.mobile-menu li {
+  margin: 12px 0;
 }
-.fullscreen-menu a {
-  color: white;
-  font-size: 24px;
+.mobile-menu a {
+  color: black;
+  font-size: 16px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: color 0.3s;
+  padding: 12px 0 12px 24px;
+  display: block;
+  width: calc(100% - 24px);
 }
-.fullscreen-menu a:hover {
-  color: #d6a78422;
+.mobile-menu li:hover {
+  background-color: #d6a78422;
 }
 
 .navigation__container li {
   display: inline;
 }
-
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+display: block
+}
 .countdown {
   display: flex;
   align-items: center;

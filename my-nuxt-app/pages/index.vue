@@ -28,6 +28,7 @@
       <div class="welcome__info--title">
         <!-- <h2>Cocktail et diner à 18h30</h2> -->
         <h4>Château de Carsix</h4>
+        <p>🏰 18h</p>
         <div
           class="address"
           @click="
@@ -64,7 +65,10 @@ export default {
   min-height: calc(100vh - 96px);
   font-family: "Great Vibes", sans-serif;
   background-color: #d6a78422;
-
+  @media (max-width: 800px) {
+    justify-content: flex-end;
+    min-height: calc(100vh - 49px);
+}
   &__info {
     display: flex;
     flex-direction: column;
@@ -118,6 +122,7 @@ export default {
   }
   .image {
     border-radius: 6px;
+    aspect-ratio: 16 / 9;
     // min-height: calc(100vh - 68px); /* Full height of the viewport */
     background-image: url("../assets/images/chateau.png"); /* Path to your image */
     display: flex;
@@ -130,7 +135,6 @@ export default {
     background-position: center;
     height: 100%;
     @media (max-width: 800px) {
-      min-height: 300px;
       width: calc(100vw - 64px);
     }
   }
