@@ -110,31 +110,24 @@ onUnmounted(() => {
 }
 
 .thumbnail {
-  width: calc(33.333% - 8px); /* 3 images per row */
-  height: auto; /* Maintain aspect ratio */
+  width: calc(33.333% - 8px);
+  height: auto;
   cursor: pointer;
   border-radius: 8px;
   transition: transform 0.3s;
+  object-fit: cover;
 }
 
 .thumbnail:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
-/* Responsive grid */
 @media (max-width: 1024px) {
   .thumbnail {
     width: calc(50% - 8px); /* 2 images per row on tablets */
   }
 }
 
-// @media (max-width: 600px) {
-//   .thumbnail {
-//     width: 100%; /* Full-width on small screens */
-//   }
-// }
-
-/* Fullscreen Viewer */
 .viewer {
   position: fixed;
   top: 0;
