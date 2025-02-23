@@ -36,7 +36,7 @@ body {
     font-size: 64px;
     margin-bottom: 32px !important;
     @media (max-width: 800px) {
-      font-size: 48px;
+      font-size: 42px;
       margin: 0px !important;
     }
   }
