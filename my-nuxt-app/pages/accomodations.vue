@@ -1,7 +1,7 @@
 <template>
   <div class="accommodations-container">
     <div :key="accomodation.key" v-for="accomodation in accomodations">
-      <h1>{{ accomodation.title }}</h1>
+      <h2>{{ accomodation.title }}</h2>
       <div class="card-container">
         <div
           class="card"
@@ -311,7 +311,7 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
 
 }
 
@@ -334,7 +334,10 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0px;
-  width: 250px;
+  @media (min-width: 800px) {
+    width: 250px;
+  }
+    
 }
 .address {
   a {

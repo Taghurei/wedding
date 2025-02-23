@@ -1,14 +1,16 @@
 <template>
-  <header>
+  <div class="navigation">
     <nav>
-      <ul>
+      <div v-if="!mobileMode" class="navigation--container">
         <div>
-          <div class="scrabble">
+          <div class="scrabble" v-if="largeDesktop">
             <div class="img img-b"></div>
             <div class="img img-g"></div>
           </div>
-          <NuxtLink to="/"> <div class="img img-container"></div></NuxtLink>
-          <div class="navigation">
+          <NuxtLink to="/" v-if="largeDesktop">
+            <div class="img img-container"></div
+          ></NuxtLink>
+          <div class="navigation__elements">
             <li><NuxtLink to="/">Accueil</NuxtLink></li>
             <li><NuxtLink to="/infos">Infos</NuxtLink></li>
             <li><NuxtLink to="/moving">Se déplacer</NuxtLink></li>
@@ -20,9 +22,37 @@
         <div class="countdown">
           <span> J - {{ daysUntilDate }} </span>
         </div>
-      </ul>
+      </div>
+      <div v-else class="navigation--mobile">
+        <div class="burger-menu" @click="toggleMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- <NuxtLink to="/"> <div class="img img-container"></div></NuxtLink> -->
+      </div>
+      <div class="overlay" @click="closeMenu" v-if="openMenu"></div>
+
+      <div v-if="openMenu" class="mobile-menu">
+        <div class="scrabble scrabble--mobile">
+            <div class="img img-b"></div>
+            <div class="img img-g"></div>
+          </div>
+        <ul>
+          <li><NuxtLink to="/" @click="closeMenu">Accueil</NuxtLink></li>
+          <li><NuxtLink to="/infos" @click="closeMenu">Infos</NuxtLink></li>
+          <li>
+            <NuxtLink to="/moving" @click="closeMenu">Se déplacer</NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/accomodations" @click="closeMenu">Se loger</NuxtLink>
+          </li>
+          <li><NuxtLink to="/photos" @click="closeMenu">Photos</NuxtLink></li>
+          <li><NuxtLink to="/gift" @click="closeMenu">Cadeaux</NuxtLink></li>
+        </ul>
+      </div>
     </nav>
-  </header>
+  </div>
 </template>
 
 <script>
@@ -31,6 +61,8 @@ export default {
   data() {
     return {
       targetDate: new Date("2025-07-19"),
+      windowWidth: null,
+      openMenu: false,
     };
   },
   computed: {
@@ -40,18 +72,49 @@ export default {
       const daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
       return daysDifference;
     },
+    largeDesktop() {
+      return this.windowWidth > 1200;
+    },
+    mediumDesktop() {
+      return !this.largeDesktop && this.windowWidth > 800;
+    },
+    mobileMode() {
+      return this.windowWidth <= 800;
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+      if (this.mobileMode) {
+        this.closeMenu();
+      }
+    },
+    toggleMenu() {
+      this.openMenu = !this.openMenu;
+    },
+    closeMenu() {
+      this.openMenu = false;
+    },
   },
 };
 </script>
 
-<style scoped>
-header {
+<style scoped lang="scss">
+.navigation {
   background-color: #fff;
   color: #1b1b1b;
   padding: 8px;
-  border-bottom: 1px solid #1b1b1b;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
+  z-index: 1;
 }
 .img-container {
   background-image: url("../assets/images/logo.png"); /* Path to your image */
@@ -73,6 +136,10 @@ header {
   position: absolute;
   display: flex;
   flex-direction: row;
+  &--mobile {
+    right: 12px;
+    top: 12px;
+  }
 }
 .img-g {
   background-image: url("../assets/images/G.png"); /* Path to your image */
@@ -84,44 +151,120 @@ header {
   width: 40px;
   height: 40px;
 }
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 64px;
-  height: 80px;
-  font-family: "Montserrat";
-  justify-content: space-between;
-  & > div {
+.navigation {
+  &--container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: row;
+    gap: 64px;
+    height: 80px;
+    font-family: "Great Vibes", sans-serif;
+    font-size: 24px;
+    justify-content: space-between;
+
+    overflow: hidden;
+    & > div {
+      display: flex;
+      flex-direction: row;
+    }
   }
-  .navigation {
+
+  &__elements {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 48px;
     text-decoration: none;
     a {
-      padding: 16px;
+      padding: 12px;
       border-radius: 6px;
       color: #1b1b1b;
       text-decoration: none;
       font-weight: 600;
+      white-space: nowrap;
       &:hover {
         text-decoration: none;
         background-color: #f5f7f9;
       }
     }
   }
+  &--mobile {
+    height: 33px;
+    display: flex;
+    flex-direction: row;
+
+    .burger-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1100;
+      span {
+        width: 30px;
+        height: 2px;
+        background-color: #1b1b1b;
+        border-radius: 2px;
+      }
+    }
+  }
 }
 
-nav ul li {
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 66vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  z-index: 1000;
+  padding-top:50px;
+}
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+}
+.mobile-menu li {
+  margin: 12px 0;
+}
+.mobile-menu a {
+  color: black;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  padding: 12px 0 12px 24px;
+  display: block;
+  width: calc(100% - 24px);
+}
+.mobile-menu li:hover {
+  background-color: #d6a78422;
+}
+
+.navigation__container li {
   display: inline;
 }
-
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 999; 
+display: block
+}
 .countdown {
   display: flex;
   align-items: center;
@@ -129,6 +272,8 @@ nav ul li {
   font-family: "Montserrat";
   margin-right: 128px;
   & > span {
+    white-space: nowrap;
+
     display: flex;
     background-color: #d6a784;
     border-radius: 6px;
@@ -138,7 +283,7 @@ nav ul li {
   color: white;
 }
 
-nav ul li a:hover {
+.navigation__container li a:hover {
   text-decoration: underline;
 }
 </style>

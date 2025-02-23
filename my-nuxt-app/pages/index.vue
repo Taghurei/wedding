@@ -1,13 +1,17 @@
 <template>
-  <div class="welcome-container">
-    <div class="infos">
-      <div>
-        <h1>Date & Lieu</h1>
-        <p>Samedi 19 Juillet 2025</p>
+  <div class="welcome">
+    <div class="welcome__info">
+      <div class="welcome__info--title">
+        <h1>Béatrix & Gauthier</h1>
+        <hr class="welcome--separator" />
+        <h3>Samedi 19 Juillet 2025</h3>
+        <p>Nous sommes heureux de vous convier à notre mariage</p>
+        <hr class="welcome--separator" />
       </div>
-      <div>
-        <p>Céremonie à 16h</p>
-        <h3>Eglise de Beaumont-le-Roger</h3>
+      <div class="welcome__info--title">
+        <!-- <h2>Céremonie à 16h</h2> -->
+        <h4>Eglise de Beaumont-le-Roger</h4>
+        <p>⛪16h</p>
         <div
           class="address"
           @click="
@@ -18,10 +22,13 @@
         >
           1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
         </div>
+        <hr class="welcome--separator" />
       </div>
-      <div>
-        <p>Cocktail et diner à 18h30</p>
-        <h3>Chateau de Carsix</h3>
+
+      <div class="welcome__info--title">
+        <!-- <h2>Cocktail et diner à 18h30</h2> -->
+        <h4>Château de Carsix</h4>
+        <p>🏰 18h</p>
         <div
           class="address"
           @click="
@@ -52,55 +59,70 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.welcome-container {
+.welcome {
   display: flex;
-  flex-direction: row;
-  min-height: calc(100vh - 150px);
-  font-family: "Montserrat";
-  // align-items: center;
-  h1 {
-    font-size: 32px;
-    margin-bottom: 32px !important;
+  flex-direction: column-reverse;
+  min-height: calc(100vh - 96px);
+  font-family: "Great Vibes", sans-serif;
+  background-color: #d6a78422;
+  @media (max-width: 800px) {
+    justify-content: flex-end;
+    min-height: calc(100vh - 49px);
+}
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 32px 32px 32px;
+    align-items: flex-start;
+    justify-content: center;
+    @media (min-width: 800px) {
+      padding: 16px 32px;
+      min-width: 30vw;
+    }
+    &--title {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
-  h2 {
-    margin-bottom: 24px !important;
-  }
-  h3 {
-    font-size: 16px;
-    margin-bottom: 12px !important;
-  }
-  p {
-    margin-bottom: 12px !important;
-    font-family: "Montserrat", light;
-    font-weight: 200;
-  }
-  h1,
-  h2,
-  h3,
-  p {
+  &--separator {
     margin: 0;
+    height: 4px;
+    background: #d6a784;
+    border: unset;
+    max-width: 64px;
   }
-  .location {
+  @media (min-width: 800px) {
+    flex-direction: row;
+    padding: 16px 32px;
+    min-width: 30vw;
   }
+  @media (max-width: 800px) {
+    overflow: auto;
+  }
+
+  // align-items: center;
+
   .address {
     font-style: italic;
     cursor: pointer;
     text-decoration: underline;
+    font-family: "Montserrat", light;
+    font-size: 12px;
   }
-  .infos {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    padding: 160px 32px;
-    min-width: 30vw;
-    // align-items: center;
-  }
+
   .image-container {
     display: flex;
     align-items: center;
     width: 100%;
+    @media (max-width: 800px) {
+      padding: 32px;
+    }
   }
   .image {
+    border-radius: 6px;
+    aspect-ratio: 16 / 9;
     // min-height: calc(100vh - 68px); /* Full height of the viewport */
     background-image: url("../assets/images/chateau.png"); /* Path to your image */
     display: flex;
@@ -112,6 +134,9 @@ export default {
     background-size: cover;
     background-position: center;
     height: 100%;
+    @media (max-width: 800px) {
+      width: calc(100vw - 64px);
+    }
   }
 }
 </style>

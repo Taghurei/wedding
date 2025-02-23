@@ -1,17 +1,16 @@
 <template>
   <div class="moving">
-    <section class="transport">
-      <!-- Titre principal -->
+    <div class="transport">
       <h1 class="transport__title">Faciliter vos déplacements</h1>
 
       <!-- Section 1 : Venir à Bernay / Beaumont-Le-Roger -->
       <div class="transport__section">
-        <h2 class="transport__section-title">
-          Venir à Bernay / Beaumont-Le-Roger
-        </h2>
+        <h3 class="transport__section-title">
+          Venir sur les lieux de célebration
+        </h3>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">🚆 En train</h3>
+            <h4 class="transport__option-title">🚆 En train</h4>
             <ul>
               <li>
                 <a
@@ -39,7 +38,7 @@
             </ul>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">🛻 En voiture</h3>
+            <h4 class="transport__option-title">🛻 En voiture</h4>
             <ul>
               <li>
                 <a
@@ -59,26 +58,34 @@
 
       <!-- Section 2 : Se déplacer pendant le week-end -->
       <div class="transport__section">
-        <h2 class="transport__section-title">
+        <h3 class="transport__section-title">
           Se déplacer pendant le week-end
-        </h2>
+        </h3>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">Privilégier le covoiturage</h3>
+            <h3 class="transport__option-title">🚗 Privilégier le covoiturage</h3>
             <p class="transport__text">
               Si vous hésitez à venir en train pour des raisons techniques,
-              sachez que no
+              sachez que nous ferons tout notre possible pour que vous puissiez prendre les places de libres dans les voitures disponibles.
             </p>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">Taxis disponibles</h3>
+            <h3 class="transport__option-title">🚕 Taxis disponibles</h3>
             <ul>
-              <li>Taxi de Beaumont-Le-Roger : <a href="tel:0232452428">02 32 45 24 28</a></li>
-              <li>Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> / <a href="tel:0603061037">06 03 06 10 37</a> </li>
+              <li>
+                Taxi de Beaumont-Le-Roger :
+                <a href="tel:0232452428">02 32 45 24 28</a>
+              </li>
+              <li>
+                Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> /
+                <a href="tel:0603061037">06 03 06 10 37</a>
+              </li>
             </ul>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">Voitures de location (depuis Evreux)</h3>
+            <h3 class="transport__option-title">
+              🚘 Voitures de location (depuis Evreux)
+            </h3>
             <ul>
               <li>
                 <a
@@ -97,23 +104,29 @@
       </div>
 
       <div class="transport__section">
-        <h2 class="transport__section-title">❓ Autres informations</h2>
-        <ul class="transport__faq">
-          <li>Parking</li>
-          <p>
-            Cérémonie religieuse: La ville de Beaumont-le-Roger à différents
+        <h3 class="transport__section-title">❓ Autres informations</h3>
+        <div class="transport__options">
+          <div class="transport__option">
+            <h3 class="transport__option-title">🅿️ Parking</h3>
+            <p class="transport__text">
+            <span class="transport__text--title">Cérémonie religieuse: </span> La ville de Beaumont-le-Roger à différents
             parking qui sont tous situés a moins de 5mn à pied de l'église
+            <p class="transport__text">
+              <span class="transport__text--title">Cocktail/Diner: </span>  Un parking est disponible sur le lieu de réception
           </p>
-          <p>
-            Cocktail/Diner: Un parking est disponible sur le lieu de réception
+            </p>
+          </div>
+          <div class="transport__option">
+            <h3 class="transport__option-title">🚌 Navettes</h3>
+            <p class="transport__text">
+              Des navettes sont prévues le samedi soir à partir de 23h pour vous
+            aider à rentrer chez vous
           </p>
-          <li>Navettes</li>
-          <p>
-            Des navettes sont prévues le samedi soir à partir de 23h pour vous aider à rentrer chez vous
-          </p>
-        </ul>
+          </div>
+    
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -132,67 +145,59 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  background-color: #f9f5f0;
+  background-color: #d6a78422;
   .transport {
     max-width: 800px;
-    margin: 0 auto;
     padding: 20px;
     border-radius: 8px;
-    width: 100vw;
 
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
     &__title {
-      font-size: 2rem;
+      font-family: "Great Vibes", sans-serif;
+      font-size: 32px;
+      margin: unset;
       color: #333;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    &__intro {
-      font-size: 1rem;
-      color: #555;
-      margin-bottom: 2rem;
       text-align: center;
     }
 
     &__section {
-      margin-bottom: 2rem;
-      padding: 1rem;
+      padding: 16px;
       background-color: #fff;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       &-title {
-        font-size: 1.5rem;
-        color: #333;
-        margin-bottom: 1rem;
         display: flex;
-        align-items: center;
+        align-self: center;
       }
+
     }
 
     &__options {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 16px;
     }
 
     &__option {
       flex: 1;
       min-width: 250px;
-
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
       &-title {
-        font-size: 1.2rem;
-        color: #333;
-        margin-bottom: 0.5rem;
+        font-size: 14px;
       }
-
       ul {
         list-style: none;
         padding: 0;
-
+        margin: 0;
         li {
-          margin: 0.5rem 0;
+          margin: 12px 0;
 
           a {
             color: #0056b3;
@@ -205,23 +210,13 @@ export default {
         }
       }
 
-      p {
-        font-size: 1rem;
-        color: #555;
+    }
+    &__text {
+      &--title {
+        font-weight: 500;
+        text-decoration: underline;
       }
     }
-
-    &__faq {
-      list-style: none;
-      padding: 0;
-      font-size: 1rem;
-      color: #555;
-
-      li {
-        margin: 0.5rem 0;
-      }
-    }
-
     &__link {
       color: #0056b3;
       text-decoration: none;
