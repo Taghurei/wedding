@@ -1,4 +1,7 @@
 <template>
+  <head>
+    <title>Béa & Gauthier</title>
+  </head>
   <link
     href="https://fonts.googleapis.com/css?family=Montserrat:light"
     rel="stylesheet"
