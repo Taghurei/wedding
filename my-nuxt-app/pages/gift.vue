@@ -1,16 +1,16 @@
 <template>
   <section class="gifts">
-    <h2 class="gifts__title">Remerciements</h2>
+    <h1 class="gifts__title">Notre liste</h1>
     <div class="gifts--container">
       <p class="gifts__intro">
-        Pour nous aider dans notre nouvelle vie de jeunes mariés, vous pouvez
-        participer à notre liste de cadeaux.
+        Si vous souhaitez participer à notre installation de jeunes mariés, nous avons créé
+        une liste de mariage : 
       </p>
 
       <a @click="redirect()" class="gifts__link">Voir la liste de cadeaux</a>
 
       <div class="gifts__section gifts__section--thankyou">
-        <h2 class="gifts__section-title">Merci infiniment !</h2>
+        <h2 class="gifts__section-title">Nous vous remercions chaleureusement !</h2>
       </div>
     </div>
   </section>

@@ -1,48 +1,76 @@
 <template>
-  <div class="welcome">
-    <div class="welcome__info">
-      <div class="welcome__info--title">
-        <h1>Béatrix & Gauthier</h1>
-        <hr class="welcome--separator" />
-        <h3>Samedi 19 Juillet 2025</h3>
-        <p>Nous sommes heureux de vous convier à notre mariage</p>
-        <hr class="welcome--separator" />
-      </div>
-      <div class="welcome__info--title">
-        <!-- <h2>Céremonie à 16h</h2> -->
-        <h4>Eglise de Beaumont-le-Roger</h4>
-        <p>⛪16h</p>
-        <div
-          class="address"
-          @click="
-            onLocationClick(
-              'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.1148023,0.6469203,12.5z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
-            )
-          "
-        >
-          1 Rue Saint-Nicolas, 27170 Beaumont-le-Roger
-        </div>
-        <hr class="welcome--separator" />
-      </div>
+  <div class="welcome" v-if="mobileMode && windowWidth">
+    <h1>Béatrix & Gauthier</h1>
+    <div class="image-container">
+      <img src="/public/photos/4.jpg" class="thumbnail-home" />
+    </div>
+    <h2>19.07.2025</h2>
+    <div class="welcome--text">
+      <p>
+        16h :
 
-      <div class="welcome__info--title">
-        <!-- <h2>Cocktail et diner à 18h30</h2> -->
-        <h4>Château de Carsix</h4>
-        <p>🏰 18h</p>
-        <div
+        <span
           class="address"
           @click="
             onLocationClick(
-              'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1139027,0.647654,12.96z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D'
+              'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.088219,0.7449333,12.88z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D'
             )
           "
         >
-          3 Rue Gustave Heon, 27300 Nassandres sur Risle
-        </div>
+          Église de Beaumont-le-Roger</span
+        >
+      </p>
+      <p>
+        18h :
+        <span
+          class="address"
+          @click="
+            onLocationClick(
+              'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1484955,0.6437081,13.3z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D'
+            )
+          "
+        >
+          Château de Carsix</span
+        >
+      </p>
+    </div>
+  </div>
+  <div class="welcome" v-else-if="windowWidth">
+    <div class="welcome--info">
+      <h1>Béatrix & Gauthier</h1>
+      <h2>19.07.2025</h2>
+      <div class="welcome--text">
+        <p>
+          16h :
+
+          <span
+            class="address"
+            @click="
+              onLocationClick(
+                'https://www.google.com/maps/place/Saint+Nicolas+Church/@49.088219,0.7449333,12.88z/data=!4m6!3m5!1s0x47e10b805235eee7:0x955e57ea2c5d62ff!8m2!3d49.0816875!4d0.7782385!16s%2Fg%2F122tcbft?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D'
+              )
+            "
+          >
+            Église de Beaumont-le-Roger</span
+          >
+        </p>
+        <p>
+          18h :
+          <span
+            class="address"
+            @click="
+              onLocationClick(
+                'https://www.google.com/maps/place/Ch%C3%A2teau+De+Carsix/@49.1484955,0.6437081,13.3z/data=!4m6!3m5!1s0x47e1a73e5d1e2d51:0x64743dcb546fbb2d!8m2!3d49.141983!4d0.6691216!16s%2Fg%2F11c208s9rq?entry=ttu&g_ep=EgoyMDI1MDMyNS4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D'
+              )
+            "
+          >
+            Château de Carsix</span
+          >
+        </p>
       </div>
     </div>
     <div class="image-container">
-      <div class="image"></div>
+      <img src="/public/photos/4.jpg" class="thumbnail-home" />
     </div>
   </div>
 </template>
@@ -50,9 +78,32 @@
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      windowWidth: 0,
+    };
+  },
   methods: {
     onLocationClick(address) {
       window.open(address, "_blank");
+    },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  beforeMount() {
+    this.windowWidth = window.innerWidth;
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  computed: {
+    mobileMode() {
+      return this.windowWidth <= 800;
     },
   },
 };
@@ -60,49 +111,50 @@ export default {
 
 <style scoped lang="scss">
 .welcome {
+  padding-top: 24px;
+  gap: 24px;
   display: flex;
-  flex-direction: column-reverse;
-  min-height: calc(100vh - 96px);
-  font-family: "Great Vibes", sans-serif;
+  flex-direction: column;
+  min-height: calc(100vh - 128px);
+  font-family: "Dancing Script", cursive;
   background-color: #d6a78422;
+  min-height: calc(100vh - 73px);
   @media (max-width: 800px) {
-    justify-content: flex-end;
-    min-height: calc(100vh - 49px);
-}
-  &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 0 32px 32px 32px;
-    align-items: flex-start;
-    justify-content: center;
-    @media (min-width: 800px) {
-      padding: 16px 32px;
-      min-width: 30vw;
-    }
-    &--title {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-  }
-  &--separator {
-    margin: 0;
-    height: 4px;
-    background: #d6a784;
-    border: unset;
-    max-width: 64px;
+    justify-content: flex-start;
+    align-items: center;
+    max-height: calc(100vh - 73px);
+
   }
   @media (min-width: 800px) {
+    justify-content: space-between;
     flex-direction: row;
     padding: 16px 32px;
     min-width: 30vw;
-  }
-  @media (max-width: 800px) {
-    overflow: auto;
-  }
+    min-height: calc(100vh - 128px);
+}
 
-  // align-items: center;
+  &--info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    justify-content: center;
+    width: 50%;
+    h1 {
+      font-size: 56px;
+      margin-bottom: 0 !important;
+    }
+  }
+  &--text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    p {
+      margin-bottom: 0px !important;
+      display: flex;
+    }
+  }
 
   .address {
     font-style: italic;
@@ -110,32 +162,30 @@ export default {
     text-decoration: underline;
     font-family: "Montserrat", light;
     font-size: 12px;
+    font-weight: 400;
+    margin-left: 4px;
   }
 
   .image-container {
     display: flex;
     align-items: center;
-    width: 100%;
+    width: 50%;
+    padding: 24px;
     @media (max-width: 800px) {
-      padding: 32px;
+      padding: 0 24px !important;
+      width: calc(100% - 64px);
     }
-  }
-  .image {
-    border-radius: 6px;
-    aspect-ratio: 16 / 9;
-    // min-height: calc(100vh - 68px); /* Full height of the viewport */
-    background-image: url("../assets/images/chateau.png"); /* Path to your image */
-    display: flex;
-    background-repeat: no-repeat;
-    flex-direction: column;
-    color: white;
-    text-align: center;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-    height: 100%;
-    @media (max-width: 800px) {
-      width: calc(100vw - 64px);
+    
+    .thumbnail-home {
+      width: auto;
+      max-width: 100%;
+      height: calc(100vh - 320px);
+      @media (min-width: 800px) {
+        height: calc(100vh - 176px);
+      }
+      border-radius: 8px;
+      object-fit: cover;
+      margin: auto;
     }
   }
 }

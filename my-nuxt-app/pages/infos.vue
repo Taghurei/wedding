@@ -4,51 +4,40 @@
 
     <h1 class="info__title">Informations Pratiques</h1>
 
-    <p class="info__intro">
-      Voici toutes les informations dont vous pourriez avoir besoin pour
-      profiter pleinement de notre mariage.
-    </p>
 
-    <!-- Section 1 : Date et lieu -->
     <div class="info__section">
-      <h4 class="info__section-title">📅 Date et lieu</h4>
-      <p class="info__text">
-        Le mariage aura lieu le samedi 19 Juillet 2025 à l'église de
-        Beaumont-Le-Roger, suivi de la réception au Château de Carsix.
-      </p>
-    </div>
+      <h4 class="info__section-title">Samedi 19 Juillet</h4>
+      <div class="info__timeline">
+        <ul class="info__list">
+          <li data-time="16h"><p>Cérémonie religieuse en l'église Saint-Nicolas de Beaumont-Le-Roger (27170)</p></li>
+          <li data-time="18h"><p>Cocktail au Château de Carsix (27300)</p></li>
+          <li data-time="20h"><p>Dîner suivi d'une soirée dansante </p></li>
+        </ul>
+        <div class="info__section--secondary">
 
-    <!-- Section 2 : Programme de la journée -->
-    <div class="info__section">
-      <h4 class="info__section-title">🕒 Programme du Samedi</h4>
-      <ul class="info__list">
-        <li>16h00 - Cérémonie religieuse ⛪</li>
-        <li>18h30 - Cocktail 🥂</li>
-        <li>20h00 - Dîner et soirée dansante 💃</li>
-      </ul>
-      <h4 class="info__section-title">🕒 Programme du Dimanche</h4>
-      <ul class="info__list">
-        <li>10h00 - Brunch 🥞</li>
-      </ul>
+          <h4 class="info__section-title">Dimanche 20 Juillet</h4>
+        </div>
+        <ul class="info__list">
+          <li data-time="10h"><p>Brunch</p></li>
+        </ul>
+      </div>
     </div>
     <div class="info__section">
-      <h4 class="info__section-title">🎶 Eglise</h4>
+      <h4 class="info__section-title">Église</h4>
       <p class="info__text">
-        Si vous souhaitez chanter durant la messe, vous pouvez nous prévenir et
-        nous vous donnerons toutes les informations associées
+        Si vous souhaitez rejoindre la chorale durant la messe, vous pouvez nous prévenir et
+        nous vous donnerons toutes les informations associées.
+        Nous vous remercions par avance !
       </p>
     </div>
     <div class="info__section">
-      <h4 class="info__section-title">📞 Contacts</h4>
-      <ul class="info__list">
-        <li>Pour toute question, contactez nous au <a :href="'tel:0631003372'" class="info__link">06 31 00 33 72</a> ou au <a :href="'tel:0645686863'"class="info__link">06 45 68 68 63</a></li>
-        <li>
-          Ou écrivez-nous à
+      <h4 class="info__section-title">Contacts</h4>
+      <p class="info__text">
+        Pour toute question, écrivez-nous à
           <a href="mailto:mariagebeagauthier@gmail.com" class="info__link"
             >mariagebeagauthier@gmail.com</a
-          >
-        </li>
-      </ul>
+          >.
+      </p>
     </div>
   </div>
 </section>
@@ -62,6 +51,10 @@ export default {
 <style lang="scss" scoped>
 .info {
   background-color: #d6a78422;
+  @media (max-width: 800px) {
+    min-height: calc(100vh - 49px);
+  }
+
   &__container {
     margin: 0 auto;
     padding: 20px;
@@ -72,15 +65,14 @@ export default {
     align-items: center;
     gap: 32px;
   }
+
   &__title {
     color: #333;
     text-align: center;
-    font-family: "Great Vibes", sans-serif;
-    font-size: 36px;
   }
 
-  &__intro {
-    text-align: center;
+  &__text {
+    // Used in template for paragraphs
   }
 
   &__section {
@@ -92,23 +84,70 @@ export default {
     flex-direction: column;
     gap: 12px;
     width: calc(100% - 32px);
+
     &-title {
       align-self: center;
+    }
+
+    &--secondary {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+  }
+
+  &__timeline {
+    position: relative;
+    margin-top: -12px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 40px;
+      top: 28px;
+      bottom: 0;
+      width: 2px;
+      background: #d6a784;
     }
   }
 
   &__list {
     list-style: none;
     padding: 0;
+    position: relative;
 
     li {
       font-size: 1rem;
-      margin: 0.5rem 0;
+      margin: 1.5rem 0;
+      padding-left: 80px;
+      position: relative;
 
-      &:before {
-        content: "•";
-        color: #0056b3;
-        margin-right: 0.5rem;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 36px;
+        top: 8px;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #d6a784;
+        border: 2px solid #fff;
+      }
+
+      &::after {
+        content: attr(data-time);
+        position: absolute;
+        left: -20px;
+        width: 50px;
+        text-align: right;
+        top: 8px;
+        transform: translateY(-50%);
+        color: black;
+        font-size: 12px;
+        padding-right: 10px;
+        font-weight: 200;
       }
     }
   }

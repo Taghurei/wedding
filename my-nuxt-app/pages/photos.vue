@@ -28,18 +28,13 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-const images = ref([
-"/photos/1.jpg",
-  "/photos/2.jpg",
-  "/photos/3.jpg",
-  "/photos/4.jpg",
-  "/photos/5.jpg",
-  "/photos/6.jpg",
-  "/photos/7.jpg",
-  "/photos/8.jpg",
-  "/photos/9.jpg",
-]);
-
+const images = computed(() => {
+  const images = [];
+  for (let i = 1; i <= 18; i++) {
+    images.push(`/photos/${i}.jpg`);
+  }
+  return images;
+});
 const viewerOpen = ref(false);
 const currentIndex = ref(0);
 let touchStartX = 0;

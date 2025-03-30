@@ -5,12 +5,12 @@
 
       <!-- Section 1 : Venir à Bernay / Beaumont-Le-Roger -->
       <div class="transport__section">
-        <h3 class="transport__section-title">
-          Venir sur les lieux de célebration
-        </h3>
+        <h4 class="transport__section-title">
+          Se rendre sur les lieux du mariage
+        </h4>
         <div class="transport__options">
           <div class="transport__option">
-            <h4 class="transport__option-title">🚆 En train</h4>
+            <p class="transport__option-title">En train</p>
             <ul>
               <li>
                 <a
@@ -38,7 +38,7 @@
             </ul>
           </div>
           <div class="transport__option">
-            <h4 class="transport__option-title">🛻 En voiture</h4>
+            <p class="transport__option-title">En voiture</p>
             <ul>
               <li>
                 <a
@@ -58,34 +58,39 @@
 
       <!-- Section 2 : Se déplacer pendant le week-end -->
       <div class="transport__section">
-        <h3 class="transport__section-title">
+        <h4 class="transport__section-title">
           Se déplacer pendant le week-end
-        </h3>
+        </h4>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">🚗 Privilégier le covoiturage</h3>
+            <p class="transport__option-title">Covoiturage</p>
             <p class="transport__text">
               Si vous hésitez à venir en train pour des raisons techniques,
-              sachez que nous ferons tout notre possible pour que vous puissiez prendre les places de libres dans les voitures disponibles.
+              sachez que nous ferons tout notre possible pour que vous puissiez
+              prendre les places de libres dans les voitures disponibles.
             </p>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">🚕 Taxis disponibles</h3>
+            <p class="transport__option-title">Taxis disponibles</p>
             <ul>
               <li>
-                Taxi de Beaumont-Le-Roger :
-                <a href="tel:0232452428">02 32 45 24 28</a>
+                <p>
+                  Taxi de Beaumont-Le-Roger :
+                  <a href="tel:0232452428">02 32 45 24 28</a>
+                </p>
               </li>
               <li>
-                Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> /
-                <a href="tel:0603061037">06 03 06 10 37</a>
+                <p>
+                  Taxi de Bernay : <a href="tel:0232441427">02 32 44 14 27</a> /
+                  <a href="tel:0603061037">06 03 06 10 37</a>
+                </p>
               </li>
             </ul>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">
-              🚘 Voitures de location (depuis Evreux)
-            </h3>
+            <p class="transport__option-title">
+              Voitures de location (depuis Évreux)
+            </p>
             <ul>
               <li>
                 <a
@@ -104,26 +109,26 @@
       </div>
 
       <div class="transport__section">
-        <h3 class="transport__section-title">❓ Autres informations</h3>
+        <h4 class="transport__section-title">Autres informations</h4>
         <div class="transport__options">
           <div class="transport__option">
-            <h3 class="transport__option-title">🅿️ Parking</h3>
+            <p class="transport__option-title">Parking</p>
             <p class="transport__text">
-            <span class="transport__text--title">Cérémonie religieuse: </span> La ville de Beaumont-le-Roger à différents
-            parking qui sont tous situés a moins de 5mn à pied de l'église
+              <span class="transport__text--title">Cérémonie religieuse</span> :
+              la ville de Beaumont-le-Roger à différents parkings qui sont tous
+              situés à moins de 5mn à pied de l'église.
+            </p>
             <p class="transport__text">
-              <span class="transport__text--title">Cocktail/Diner: </span>  Un parking est disponible sur le lieu de réception
-          </p>
+              <span class="transport__text--title">Cocktail/Dîner</span> : un
+              parking est disponible sur le lieu de réception.
             </p>
           </div>
           <div class="transport__option">
-            <h3 class="transport__option-title">🚌 Navettes</h3>
+            <p class="transport__option-title">Navettes</p>
             <p class="transport__text">
-              Des navettes sont prévues le samedi soir à partir de 23h pour vous
-            aider à rentrer chez vous
-          </p>
+              Des navettes seront prévues le samedi soir à partir de 23h.
+            </p>
           </div>
-    
         </div>
       </div>
     </div>
@@ -155,8 +160,6 @@ export default {
     flex-direction: column;
     gap: 32px;
     &__title {
-      font-family: "Great Vibes", sans-serif;
-      font-size: 32px;
       margin: unset;
       color: #333;
       text-align: center;
@@ -173,8 +176,8 @@ export default {
       &-title {
         display: flex;
         align-self: center;
+        text-align: center;
       }
-
     }
 
     &__options {
@@ -188,20 +191,31 @@ export default {
       min-width: 250px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
       &-title {
-        font-size: 14px;
+        font-size: 18px;
+        margin-bottom: 8px !important;
+        font-weight: 600;
+    margin-bottom: 8px !important;
+    color: #d6a784;
+    @media (max-width: 800px) {
+          font-size: 14px;
+        }
       }
       ul {
         list-style: none;
         padding: 0;
         margin: 0;
         li {
-          margin: 12px 0;
-
+          margin: 0;
           a {
+            font-family: "Montserrat", light;
+            font-size: 14px;
+            font-weight: 400;
             color: #0056b3;
             text-decoration: none;
+            @media (max-width: 800px) {
+              font-size: 12px;
+            }
 
             &:hover {
               text-decoration: underline;
@@ -209,7 +223,6 @@ export default {
           }
         }
       }
-
     }
     &__text {
       &--title {

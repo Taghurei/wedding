@@ -16,10 +16,10 @@
             <li><NuxtLink to="/moving">Se déplacer</NuxtLink></li>
             <li><NuxtLink to="/accomodations">Se loger</NuxtLink></li>
             <li><NuxtLink to="/photos">Photos</NuxtLink></li>
-            <li><NuxtLink to="/gift">Cadeaux</NuxtLink></li>
+            <li><NuxtLink to="/gift">Liste de Mariage</NuxtLink></li>
           </div>
         </div>
-        <div class="countdown">
+        <div class="countdown" v-if="daysUntilDate > 0">
           <span> J - {{ daysUntilDate }} </span>
         </div>
       </div>
@@ -35,9 +35,9 @@
 
       <div v-if="openMenu" class="mobile-menu">
         <div class="scrabble scrabble--mobile">
-            <div class="img img-b"></div>
-            <div class="img img-g"></div>
-          </div>
+          <div class="img img-b"></div>
+          <div class="img img-g"></div>
+        </div>
         <ul>
           <li><NuxtLink to="/" @click="closeMenu">Accueil</NuxtLink></li>
           <li><NuxtLink to="/infos" @click="closeMenu">Infos</NuxtLink></li>
@@ -48,8 +48,14 @@
             <NuxtLink to="/accomodations" @click="closeMenu">Se loger</NuxtLink>
           </li>
           <li><NuxtLink to="/photos" @click="closeMenu">Photos</NuxtLink></li>
-          <li><NuxtLink to="/gift" @click="closeMenu">Cadeaux</NuxtLink></li>
+          <li>
+            <NuxtLink to="/gift" @click="closeMenu">Liste de Mariage</NuxtLink>
+          </li>
+          <div class="mobile-countdown" v-if="daysUntilDate > 0">
+            <span> J - {{ daysUntilDate }} </span>
+          </div>
         </ul>
+        <NuxtLink to="/"> <div class="mobile-img img img-container"></div></NuxtLink>
       </div>
     </nav>
   </div>
@@ -73,7 +79,7 @@ export default {
       return daysDifference;
     },
     largeDesktop() {
-      return this.windowWidth > 1200;
+      return this.windowWidth > 1380;
     },
     mediumDesktop() {
       return !this.largeDesktop && this.windowWidth > 800;
@@ -122,6 +128,9 @@ export default {
   height: 65px;
   margin: 0 80px;
 }
+.mobile-img {
+  margin: 0;
+}
 .img {
   background-size: cover; /* Cover the entire area */
   background-position: center; /* Center the image */
@@ -160,7 +169,7 @@ export default {
     flex-direction: row;
     gap: 64px;
     height: 80px;
-    font-family: "Great Vibes", sans-serif;
+    font-family: "Dancing Script", cursive;
     font-size: 24px;
     justify-content: space-between;
 
@@ -219,21 +228,20 @@ export default {
   top: 0;
   left: 0;
   width: 66vw;
-  height: 100vh;
+  height: calc(100vh - 50px);
   background-color: white;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
   z-index: 1000;
-  padding-top:50px;
+  padding-top: 50px;
 }
 .mobile-menu ul {
   list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
-
 }
 .mobile-menu li {
   margin: 12px 0;
@@ -261,10 +269,15 @@ export default {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: 999; 
-display: block
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: block;
 }
+.mobile-countdown {
+  margin-left: 24px;
+  margin-top: 24px;
+}
+.mobile-countdown,
 .countdown {
   display: flex;
   align-items: center;
