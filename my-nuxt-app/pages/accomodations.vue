@@ -1,7 +1,7 @@
 <template>
   <div class="accommodations-container">
     <div :key="accomodation.key" v-for="accomodation in accomodations">
-      <h2>{{ accomodation.title }}</h2>
+      <h1>{{ accomodation.title }}</h1>
       <div class="card-container">
         <div
           class="card"
@@ -14,70 +14,40 @@
             :alt="`Image of ${hotel.name}`"
             class="hotel-image"
           />
-          <h2>{{ hotel.type }}</h2>
-          <h3>{{ hotel.name }}</h3>
-          <p class="address">
-            📍 Adresse:
+          <h4>{{ hotel.type }}</h4>
+          <h2>{{ hotel.name }}</h2>
+
+          <div class="card-details--text center">
+            <a :href="hotel.website" target="_blank">Visiter le site web</a>
+          </div>
+          <div class="card-details--text">
+            <span class="card--details--title">Adresse :</span>
             <a :href="getGoogleMapsLink(hotel.address)" target="_blank">
               {{ hotel.address }}
             </a>
-          </p>
-          <p class="text-with-icon">
-            <img
-              src="@/assets/images/website.png"
-              alt="Phone icon"
-              class="icon"
-            />
-            <a :href="hotel.website" target="_blank"> Visiter le site web </a>
-          </p>
-          <p v-if="hotel.phone">
-            📞 Téléphone: <a :href="'tel:' + hotel.phone">{{ hotel.phone }}</a>
-          </p>
-          <p class="text-with-icon" v-if="hotel.capacity">
-            Capacité: {{ hotel.capacity }}
-            <img
-              src="@/assets/images/people.png"
-              alt="Phone icon"
-              class="icon"
-            />
-          </p>
-          <div class="distance">
-            <!-- <span> Distance: </span> -->
-            <div class="distance--details">
-              <p v-if="hotel.travelRailway" class="text-with-icon">
-                <img
-                  src="@/assets/images/train.png"
-                  alt="Phone icon"
-                  class="icon"
-                />
-                <span> : {{ hotel.travelRailway }} </span>
-                <img
-                  v-if="hotel.railwayType === 'walking'"
-                  src="@/assets/images/walking.png"
-                  alt="Phone icon"
-                  class="icon"
-                />
-                <img
-                  v-else
-                  src="@/assets/images/car.png"
-                  alt="Phone icon"
-                  class="icon"
-                />
-              </p>
-              <p v-if="hotel.travelChateau" class="text-with-icon">
-                <img
-                  src="@/assets/images/castle.png"
-                  alt="Phone icon"
-                  class="icon"
-                />
-                <span> : {{ hotel.travelChateau }} </span>
-                <img
-                  src="@/assets/images/car.png"
-                  alt="Phone icon"
-                  class="icon"
-                />
-              </p>
-            </div>
+          </div>
+
+
+          <div class="card-details--text" v-if="hotel.phone">
+            <span class="card--details--title">Téléphone :</span>
+            <a :href="'tel:' + hotel.phone">{{ hotel.phone }}</a>
+          </div>
+
+          <div class="card-details--text" v-if="hotel.capacity">
+            <span class="card--details--title">Capacité :</span>
+            <span>{{ hotel.capacity }} personnes</span>
+          </div>
+
+          <div v-if="hotel.travelRailway" class="card-details--text">
+            <span class="card--details--title">Distance de la gare :</span>
+            <span>{{ hotel.travelRailway }}</span>
+            <span v-if="hotel.railwayType === 'walking'">à pieds</span>
+            <span v-else>en voiture</span>
+          </div>
+
+          <div v-if="hotel.travelRailway" class="card-details--text">
+            <span class="card--details--title">Distance de Carsix :</span>
+            <span>{{ hotel.travelChateau }} en voiture</span>
           </div>
         </div>
       </div>
@@ -246,7 +216,7 @@ export default {
               name: "Maison 54",
               address: "54 Rue Leprévost de Beaumont, 27300 Bernay",
               website:
-              "https://www.booking.com/hotel/fr/maison-54-bernay.fr.html",
+                "https://www.booking.com/hotel/fr/maison-54-bernay.fr.html",
               travelRailway: "4mn",
               railwayType: "car",
               travelChateau: "7mn",
@@ -312,7 +282,6 @@ export default {
   flex-direction: column;
   gap: 30px;
   background-color: #d6a78422;
-
 }
 
 .card-container {
@@ -334,33 +303,48 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 0px;
+  width: 100%;
   @media (min-width: 800px) {
     width: 250px;
   }
-    
-}
-.address {
-  a {
-    font-style: italic;
+  &--details {
+    &--title {
+      font-weight: 400;
+      text-wrap: nowrap;
+    }
   }
 }
-.card h3,
-h2 {
-  margin: 0;
-}
 
-.text-with-icon {
+.card-details--text {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4px;
+  font-size: 12px;
+  font-weight: 300;
+  flex-direction: row;
+  align-items: flex-start;
+  @media (min-width: 800px) {
+    align-self: flex-start;
+  }
+  &.center {
+    align-self: center;
+  }
+  a {
+    color: #0056b3;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: left;
+  }
 }
+
 .card p {
   margin: 0;
 }
 
 .card a {
-  color: #007bff;
+  color: #0056b3;
   text-decoration: none;
 }
 
@@ -368,26 +352,11 @@ h2 {
   text-decoration: underline;
 }
 
-.icon {
-  width: 20px;
-  height: 20px;
-}
 .hotel-image {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 10px;
-}
-.distance {
-  display: flex;
-  direction: row;
-  gap: 8px;
-  align-items: center;
-  &--details {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
 }
 </style>
