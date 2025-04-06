@@ -15,7 +15,7 @@
             <li><NuxtLink to="/infos">Infos</NuxtLink></li>
             <li><NuxtLink to="/moving">Se déplacer</NuxtLink></li>
             <li><NuxtLink to="/accomodations">Se loger</NuxtLink></li>
-            <li><NuxtLink to="/photos">Photos</NuxtLink></li>
+            <!-- <li><NuxtLink to="/photos">Photos</NuxtLink></li> -->
             <li><NuxtLink to="/gift">Liste de Mariage</NuxtLink></li>
           </div>
         </div>
@@ -47,7 +47,7 @@
           <li>
             <NuxtLink to="/accomodations" @click="closeMenu">Se loger</NuxtLink>
           </li>
-          <li><NuxtLink to="/photos" @click="closeMenu">Photos</NuxtLink></li>
+          <!-- <li><NuxtLink to="/photos" @click="closeMenu">Photos</NuxtLink></li> -->
           <li>
             <NuxtLink to="/gift" @click="closeMenu">Liste de Mariage</NuxtLink>
           </li>
